@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
-  has_many :appointments
+  has_many :appointments, dependent: :nullify
+  has_many :doctors, through: :appointments
 
   def print
     puts self.name.light_green
@@ -13,7 +14,6 @@ class Patient < ActiveRecord::Base
   end
 
   def update_provider(new_provider)
-    # COMPLETE ME!!! This method should update the patient's insurance provider in the Database
-    # NOTE: Make sure to think about what should happen when we update a patient who is currently uninsured
+    self.update(insurance_provider: new_provider, is_insured: true)
   end
 end

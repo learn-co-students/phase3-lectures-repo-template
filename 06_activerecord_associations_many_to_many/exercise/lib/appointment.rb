@@ -2,6 +2,14 @@ class Appointment < ActiveRecord::Base
   belongs_to :doctor
   belongs_to :patient
 
+  def self.upcoming
+    where("time > ?", Time.now)
+  end
+
+  def self.past
+    where("time < ?", Time.now)
+  end
+
   def name
     "#{self.doctor ? self.doctor.name : 'unknown doctor'} #{self.time} with #{self.patient ? self.patient.name : 'unknown patient'}"
   end
