@@ -1,8 +1,5 @@
 class Doctor < ActiveRecord::Base
-  has_many :appointments, dependent: :nullify
-  # equivalent to
-  # self.has_many(:appointments, { :dependent => :nullify })
-  has_many :patients, through: :appointments
+  has_many :appointments
 
   def print
     puts self.name.light_green
@@ -12,6 +9,6 @@ class Doctor < ActiveRecord::Base
   end
 
   def update_specialization(specialization)
-    self.update(specialization: specialization)
+    # COMPLETE ME!!! This method should update the doctor's specialization in the database
   end
 end 
