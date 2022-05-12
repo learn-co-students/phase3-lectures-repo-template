@@ -1,5 +1,15 @@
 # Ruby Fundamentals
 
+## Lecture Topics
+
+- Variables
+- Methods
+- Conditionals
+- Arrays
+- Hashes
+- puts
+- binding.pry
+
 Welcome to ruby fundamentals! For the first couple of phases, we focused our attention on JavaScript and then React, so we have a good idea now of how we can build a web based application that runs in the browser. The part of a web application that runs in the browser is called the frontend of a full stack web application. What we don't know how to do yet is to build out our own custom backend with logic that we can control, complicated database relationships and persistence. Learning how to build out the backend is going to be the focus of Phase 3.
 
 We're also switching languages to Ruby to do this. At the end of the phase, you'll build out a react application that can connect to a backend API written in ruby code that you can send fetch requests to and get/persist related data. One of the main reasons we're switching languages to Ruby for this part of the course is that there are robust tools already in place for creating rock solid APIs in Ruby. During this phase we'll be introducing a library called ActiveRecord which you'll be using extensively in Phase 4 and beyond. ActiveRecord gives you the tools to build out your domain model for the application you want to build and the ability to store and access all of its required data and behavior. 
