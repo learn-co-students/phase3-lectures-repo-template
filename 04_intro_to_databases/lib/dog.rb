@@ -182,9 +182,6 @@ class Dog
   end
 
   # print details about a dog including the last walked at and last fed at times
-  # ✅ We'd like to change the color of the name to indicate whether this dog needs to be walked or fed
-  # Below, the private method called formatted_name will handle the logic. 
-  # Call the formatted_name method within print to add the coloring
   def print
     puts
     puts self.formatted_name

@@ -27,8 +27,6 @@ def ask_for_choice
 end
 
 
-
-
 # `list_dogs` will iterate over an array of
 # dog instances and call print on each one.
 def list_dogs(dogs)
@@ -38,11 +36,6 @@ def list_dogs(dogs)
 end
 
 
-# ✅ Refactor
-# The `add_dog` method doesn't need to accept an array of dog
-# instances as an argument anymore.
-# The dog class is now taking ownership of storing dogs, 
-# so we'll use the appropriate method to make sure the dog we create is saved
 
 # add_dog should:
 # ask the user for input of the
@@ -71,11 +64,6 @@ def add_dog
 end
 
 
-# ✅ Refactor: 
-# 1. We're going to remove all references to $dogs within this method because the Dog class is now taking ownership of managing collections of dogs
-# 2. within the logic for handling choice 3 for walking a dog, we'll pass in only the dogs that need a walk (instead of all the dogs)
-# 3. within the logic for handling choice 4 for feeding a dog, we'll pass in only the dogs that are hungry (instead of all the dogs)
-
 # handle the choice that a user makes by calling the appropriate method or printing an error message if the user types something other than one of our specified options
 def handle_choice(choice)
   if choice == "1"
@@ -93,8 +81,6 @@ def handle_choice(choice)
     puts "Please try again."
   end
 end
-
-# ✅ Refactor
 
 # `choose_dog_from_collection` will:
 #  - accept an array of dog instances as an argument
