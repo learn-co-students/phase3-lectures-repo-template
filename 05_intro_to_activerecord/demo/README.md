@@ -30,7 +30,6 @@
 - Part 3
   - Open Question period & Review Important Topics:
     - association macros and what they do
-    - 
 
 
 ## Dog Walker CLI Part 5
@@ -45,9 +44,9 @@
 - Migrations
   - `dogs` table
     - name (string)
-    - age (string)
+    - birthdate (datetime)
     - breed (string)
-    - favorite_treats (string)
+    - image_url (string)
     - last_fed_at (datetime)
     - last_walked_at (datetime)
   - `walks` table
@@ -75,8 +74,6 @@
   - Add menu options for viewing all of a dog's walks or feedings.
   - Add `list_walks_for_dog` method that prompts user to choose a dog and then lists that dogs walks after the choice is made.
   - Add `list_feedings_for_dog` method that prompts user to choose a dog and then lists that dogs feedings after the choice is made.
-  - Because both of these methods require the user to choose a dog, and we've also needed that functionality a couple of times before when finding a dog to feed or walk, we can pull this functionality out into a separate method now (because we're doing it more than 3 times)
-  - The method `prompt_user_to_choose_dog` will print the numbered list of dogs, ask the user for their choice and return the Dog instance corresponding to their choice. Because we have one place we're doing this, we can also add in some error handling. If the user types in something that isn't "exit" or a valid number choice, we can show them an error message and ask them to choose again.
 
 ### Logistics
 
@@ -160,9 +157,9 @@ class CreateDogs < ActiveRecord::Migration[6.1]
   def change
     # describe the change we're making to our database
     create_table :dogs do |t|
-      puts t.inspect
+      puts t.class
       t.string :name
-      t.string :age
+      t.datetime :birthdate
       t.string :breed
     end
   end
@@ -230,16 +227,28 @@ Walk.destroy_all
 Feeding.destroy_all
 Dog.destroy_all
 
-lennon = Dog.create(name: "Lennon", age: "1 year", breed: "Pomeranian", favorite_treats: "cheese")
-memphis = Dog.create(name: "Memphis", age: "2 years", breed: "Greyhound", favorite_treats: "bacon")
+lennon = Dog.create(
+  name: "Lennon",
+  birthdate: "2020-08-31",
+  breed: "Pomeranian", 
+  image_url: "https://res.cloudinary.com/dnocv6uwb/image/upload/v1609370267/dakota-and-lennon-square-compressed_hoenfo.jpg"
+)
+olivia = Dog.create(
+  name: "Olivia",	
+  birthdate: "2018-03-31",
+  breed:	"Terrier",
+  image_url: "https://res.cloudinary.com/dnocv6uwb/image/upload/v1631229064/zx6CPsp_d_utkmww.webp"
+)
 
-lennon.walks.create(time: 4.hours.ago)
-lennon.walks.create(time: 6.hours.ago)
+# create a couple of walks and feedings for Lennon 
+lennon.walks.create(time: 7.hours.ago)
+lennon.walks.create(time: 10.hours.ago)
 
 lennon.feedings.create(time: 30.minutes.ago)
 
-memphis.walks.create(time: 15.minutes.ago)
-mephis.feedings.create(time: 2.hours.ago)
+# create a couple of walks and feedings for Olivia
+olivia.walks.create(time: 15.minutes.ago)
+olivia.feedings.create(time: 2.hours.ago)
 ```
 
 I've got this code in the `db/seeds.rb` file commented out currently, so we'll want to uncomment it so we can run it and get a couple of dogs in the database as well as some walks and feedings.
