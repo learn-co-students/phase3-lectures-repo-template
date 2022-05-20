@@ -1,4 +1,6 @@
+# ✅ We're going to inherit from ActiveRecord::Base here so we can get methods for DB persistence
 class Dog
+  # ✅ Association macros are generally added near the top of class definitions
   # Class methods will be defined above initialize by convention
   # and instance methods will be defined below initialize
 
